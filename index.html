@@ -159,21 +159,35 @@
 
         function celebrate() {
             document.getElementById('step2').classList.add('hidden');
-            document.getElementById('step3').classList.remove('hidden');
-            document.getElementById('myAudio').play();
-            // document.body.style.backgroundColor = "#ffe6f0"; // Arka planı hafiflet
-        }
+            document.<div id="step3" class="container hidden">
+    <div class="hearts-anim">❤️❤️❤️</div>
+    <img src="foto3.jpg" alt="Üçüncü Fotoğraf">
+    <h1>Biliyordum! Seni Çok Seviyorum! 🥰</h1>
+    <p>Şimdi tek yapmamız gereken bu güzel anları yeniden yaşamak.</p>
+    
+    <button id="musicBtn" onclick="playMyMusic()" style="background-color: #ff0055; color: white; animation: beat 1s infinite;">
+        Bizim Şarkımızı Başlat 🎵
+    </button>
 
-        function moveButton() {
-            const btn = document.getElementById('noBtn');
-            const container = document.getElementById('step2'); // İçinde bulunduğu container
-            const x = Math.random() * (container.offsetWidth - btn.offsetWidth);
-            const y = Math.random() * (container.offsetHeight - btn.offsetHeight);
-            btn.style.position = 'absolute';
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
-        }
-    </script>
-</body>
-</html>
+    <audio id="myAudio" loop>
+        <source src="muzik.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<script>
+    // Diğer fonksiyonların (nextStep, moveButton vb.) altına bunu ekle:
+    function playMyMusic() {
+        var audio = document.getElementById('myAudio');
+        var btn = document.getElementById('musicBtn');
+        
+        audio.play().then(() => {
+            btn.innerHTML = "Şarkımız Çalıyor... ❤️";
+            btn.style.background = "#4a0000";
+            btn.disabled = true; // Tekrar basılmasın
+        }).catch(error => {
+            alert("Müzik çalınamadı, lütfen sesin açık olduğundan emin ol!");
+        });
+    }
+</script>
+
 
